@@ -39,7 +39,7 @@
         </nav>
     </header>
     
-    <section class="w-11/12 md:w-10/12 mx-auto mt-14 mb-4 p-6 shadow-md">
+    <section class=" md:w-10/12 mx-auto mt-14 mb-4 p-6 shadow-md rouned-md">
         <div class="flex gap-2">
             <button class="bg-[#4A00FF] text-white font-semibold py-3 px-9 rounded-md">All</button>
             <button class="bg-white shadow-md text-[#64748B] font-semibold py-3 px-9 rounded-md">Open</button>
@@ -49,7 +49,8 @@
         
     </section>
 
-    <section id="main-container" class="w-11/12 md:w-10/12 mx-auto p-6 shadow-md flex justify-between items-center">
+    <section id="main-container" class=" md:w-10/12 mx-auto p-6 shadow-md flex justify-between items-center rounded-md">
+        
         <div id="left-side-issues" class="flex gap-2 items-center">
             <div class="">
                 
@@ -80,6 +81,27 @@
             </div>
         </div>
     </section>
+
+    <section id="main-cards" class="md:w-10/12 mx-auto bg-[#FBFBFB]">
+        <div id="card-container" class="border-2 border-blue-600 grid grid-cols-1 md:grid-cols-4 p-6">
+
+            <div class="github-card bg-white shadow-md p-4 border-t-4 border-t-[#00A96E] rounded-md">
+                
+                <div class="flex justify-between items-center mb-3">
+                    <img src="./assets/Open-Status.png" alt="">
+                    <p class="text-[#EF4444] bg-[#FEECEC] py-1 px-7 rounded-xl">HIGH</p>
+                </div>
+               <h2>Fix navigation menu on mobile devices</h2>
+                <p class="mt-2 mb-3 text-sm text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+
+                <div class="flex gap-1 items-center">
+                    <p class="py-1 px-2 bg-[#FDE68A] rounded-md">BUG</p>
+                    <p class="py-1 px-2 bg-[#FDE68A] rounded-md">HELP WANTED</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
 
 </body>
 </html>
