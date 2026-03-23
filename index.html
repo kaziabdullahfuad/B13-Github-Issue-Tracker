@@ -4,10 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Login Form</title>
+
+    <!-- DaisyUI and Tailwind CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- css linked -->
+    <link rel="stylesheet" href="./style/style.css">
+
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
 </head>
 <body>
-    <h1>Hello man</h1>
-    <h2>Tmi ki koro</h2>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus deleniti sequi fuga quaerat consectetur aliquam tenetur placeat necessitatibus facilis maiores quae quibusdam sed at recusandae nulla impedit porro, non ab, magni labore a possimus voluptates. Adipisci numquam, officia dolor similique nulla maiores! Maiores sunt perspiciatis fuga expedita rem nisi quo!</p>
+    
+    <section id="github-login-section" class=" min-h-screen flex flex-col justify-center items-center rounded-md">
+
+        <div class="login-card md:w-[520px] p-8 bg-[#FFFFFF] shadow-lg">
+            <div class="text-center">
+                <img src="./assets/github-logo.png" alt="" class="mx-auto">
+                <h2 class="font-semibold text-2xl mt-6 mb-1 text-[#1F2937]">GitHub Issues Tracker</h2>
+                <p class="mb-6 text-[#64748B]">Sign in to manage your issues</p>
+            </div>
+            <label for="username" class="font-medium mt-2 text-[#1F2937]" for="">Username</label>
+            <br>
+            <input  id="username"  type="text" placeholder="Enter Username" class="w-full p-2 text-[#64748B] rounded-md mb-4">
+            <br>
+            <label for="password" class="font-medium mt-2 text-[#1F2937]">Password</label>
+            <br>
+            <input id="password" class="w-full p-2 text-[#64748B] rounded-md mb-10" type="password" placeholder="Enter Password">
+            <br>
+            <button id="login-button" type="submit" class="w-full border-1 bg-[#4A00FF] text-[#FFFFFF] p-4 rounded-md cursor-pointer mb-10">Sign In</button>
+
+            <div class="text-center">
+                <p class="mb-2 text-sm text-[#64748B]">Demo Credientials</p>
+                <h3 class="text-[#1F2937]"><span class="font-semibold">Username</span>: admin</h3>
+                <h3 class="text-[#1F2937]"><span class="font-semibold">Password</span>: admin123</h3>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script/login.js"></script>
 </body>
 </html>
