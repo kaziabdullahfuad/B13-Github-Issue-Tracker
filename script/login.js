@@ -15,6 +15,7 @@ document.getElementById('login-button').addEventListener('click',function(){
         alert("Wrong Username or Password");
         document.getElementById('username').value="";
         document.getElementById('password').value="";
+        return;
     }
     
 });
