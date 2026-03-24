@@ -215,3 +215,28 @@ const displayData=(data)=>{
 };
 
 fetchAll();
+
+document.getElementById('btn-search').addEventListener("click",function(){
+
+    // will have to remove styles and then give style to the needed one
+    document.getElementById('all-btn-tab').classList.remove('bg-[#4A00FF]', 'text-white');
+    document.getElementById('open-btn-tab').classList.remove('bg-[#4A00FF]', 'text-white');
+    document.getElementById('closed-btn-tab').classList.remove('bg-[#4A00FF]', 'text-white');
+
+    // will add all only default styles
+    document.getElementById('all-btn-tab').classList.add('bg-white', 'shadow-md', 'text-[#64748B]');
+    document.getElementById('open-btn-tab').classList.add('bg-white', 'shadow-md', 'text-[#64748B]');
+    document.getElementById('closed-btn-tab').classList.add('bg-white', 'shadow-md', 'text-[#64748B]');
+    
+    const input=document.getElementById('input-search');
+    const searchValue=input.value.trim().toLowerCase();
+    // console.log(searchValue);
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res=>res.json())
+    .then(data=>{
+        //console.log(data);
+        displayData(data.data);
+    });
+    
+});
