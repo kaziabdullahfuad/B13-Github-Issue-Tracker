@@ -6,6 +6,68 @@ const createElement=(arr)=>{
    return htmlElements.join(' ');
 };
 
+const manageSpinner=(status)=>{
+    
+    
+    if(status==true){
+        document.getElementById('spinner').classList.remove('hidden');
+        document.getElementById('card-container').classList.add('hidden');
+    }
+    else{
+         document.getElementById('spinner').classList.add('hidden');
+        document.getElementById('card-container').classList.remove('hidden');
+    }
+}
+
+const loadCardDetail=async(id)=>{
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+
+    
+
+    const res=await fetch(url); 
+    const data=await res.json();
+    displayCardDetails(data.data);
+    
+    
+}
+
+const displayCardDetails=(card)=>{
+    // will return an object
+    console.log(card);
+    
+    const detailsBox=document.getElementById('details-container');
+
+    detailsBox.innerHTML="";
+    document.getElementById('card_modal').showModal();
+
+    detailsBox.innerHTML=`
+        <h2 class="text-2xl font-bold">${card.title}</h2>
+                <div class="flex gap-3 items-center mt-2 mb-6">
+                    <p class="p-1 text-white bg-[#00A96E] rounded-md">Opened</p>
+                    <p class="text-xs text-[#64748B]">Opened by ${card.author}</p>
+                    <p class="text-xs text-[#64748B]">${card.createdAt}</p>
+                </div>
+
+                 <div class="flex gap-1 items-center mb-6">
+                    ${createElement(card.labels)}
+                </div>
+
+                <p class="text-[#64748B] mb-6">${card.description}</p>
+
+                <div class="flex gap-8 bg-[#F8FAFC] p-4 items-center">
+                    <div>
+                        <p class="text-[#64748B]">Assignee:</p>
+                        <h3 class="font-semibold text-[#1F2937]">${card.assignee}</h3>
+                    </div>
+
+                    <div >
+                         <p class="text-[#64748B]">Priority:</p>
+                         <p class="p-1 text-white bg-[#EF4444] rounded-md text-center">${card.priority}</p>
+                    </div>
+                </div>
+    `;
+}
+
 const btnTabClicked=(id)=>{
     
     console.log(id);
@@ -48,12 +110,17 @@ const issueCount=(data)=>{
 
 const fetchAll=()=>{
 
+     manageSpinner(true);
+
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then((res)=>res.json())
     .then(data=>displayData(data.data))
 };
 
 const filterClosed=()=>{
+
+     manageSpinner(true);
+
      fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then((res)=>res.json())
     .then((data)=>{
@@ -64,6 +131,9 @@ const filterClosed=()=>{
 }
 
 const filterOpen=()=>{
+
+     manageSpinner(true);
+
      fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then((res)=>res.json())
     .then((data)=>{
@@ -74,9 +144,8 @@ const filterOpen=()=>{
 }
 
 const displayData=(data)=>{
-    console.log(data);
     issueCount(data);
-    document.getElementById('spinner').classList.remove('hidden');
+   
     // now show the data
     const cardContainer=document.getElementById('card-container');
     cardContainer.innerHTML="";
@@ -100,7 +169,7 @@ const displayData=(data)=>{
         const imagePath=borderColour==="#00A96E" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png";
         // console.log(borderColour);
         // console.log(imagePath);
-        console.log(elem.status);
+        // console.log(elem.status);
         
 
         let priorityClass="";
@@ -117,7 +186,7 @@ const displayData=(data)=>{
         
         githubCard.innerHTML=`
             
-        <div class="github-card bg-white shadow-md p-4 border-t-4 border-t-[${borderColour}] rounded-md">
+        <div onclick="loadCardDetail(${elem.id})" class="github-card bg-white shadow-md p-4 border-t-4 border-t-[${borderColour}] rounded-md">
                 
                 <div class="flex justify-between items-center mb-3">
                     <img src="${imagePath}" alt="">
@@ -141,7 +210,7 @@ const displayData=(data)=>{
         cardContainer.appendChild(githubCard);
     })
 
-    document.getElementById('spinner').classList.add('hidden');
+    manageSpinner(false);
     
 };
 
